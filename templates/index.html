@@ -9,9 +9,10 @@
 <body>
     <div class="container">
         <h1>Spotify Playlist Viewer</h1>
-        <!-- Input field for the playlist ID -->
+        <div id="ascii-art"></div>
         <input type="text" id="playlist-id" placeholder="Enter Spotify Playlist ID">
         <button onclick="fetchPlaylist()">Fetch Playlist</button>
+        <div id="playlist-info"></div>
         <ul id="song-list"></ul>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
