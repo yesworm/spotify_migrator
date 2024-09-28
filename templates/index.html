@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Playlist Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Spotify Playlist Viewer</h1>
+        <!-- Input field for the playlist ID -->
+        <input type="text" id="playlist-id" placeholder="Enter Spotify Playlist ID">
+        <button onclick="fetchPlaylist()">Fetch Playlist</button>
+        <ul id="song-list"></ul>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
