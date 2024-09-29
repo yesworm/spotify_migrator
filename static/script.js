@@ -41,4 +41,42 @@ function displaySongs(songs) {
     });
 }
 
-// ASCII art generation and interaction will be added here later
+const trailCharacters = ['@', '#', '$', '%', '&', '*', '!', '?', '<', '>'];
+let lastTrailTime = 0;
+
+function createTrailCharacter(x, y) {
+    const trailChar = document.createElement('div');
+    trailChar.className = 'trail-character';
+    trailChar.style.left = `${x}px`;
+    trailChar.style.top = `${y}px`;
+    trailChar.textContent = trailCharacters[Math.floor(Math.random() * trailCharacters.length)];
+    document.getElementById('cursor-trail').appendChild(trailChar);
+
+    setTimeout(() => {
+        trailChar.style.opacity = '0';
+    }, 100);
+
+    setTimeout(() => {
+        trailChar.remove();
+    }, 1000);
+}
+
+document.addEventListener('mousemove', (e) => {
+    const currentTime = Date.now();
+    if (currentTime - lastTrailTime > 50) {  // Limit the rate of trail creation
+        createTrailCharacter(e.clientX, e.clientY);
+        lastTrailTime = currentTime;
+    }
+});
+
+// Custom cursor
+const cursor = document.createElement('div');
+cursor.className = 'trail-character';
+cursor.textContent = '_';  // You can change this to any character you like
+cursor.style.fontSize = '24px';
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+});
